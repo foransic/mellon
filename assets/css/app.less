@@ -1,0 +1,177 @@
+/* Colors */
+@theme-color-1: #80d4f6;
+@theme-color-2: #5c196b;
+@theme-color-3: #fffff5;
+
+@background-color: #ffffff;
+@text-color: #5e5e5f;
+@text-color-warning: #c00;
+@link-color: @theme-color-2;
+@link-color-hover: @theme-color-1;
+@button-text-color: #ffffff;
+@button-color: @theme-color-1;
+@button-color-hover: @theme-color-2;
+
+
+
+/* Fonts */
+@default-fonts: 'Poppins', sans-serif;
+@title-fonts: 'Poppins', sans-serif;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  min-height: 100%;
+
+  font-family: @default-fonts;
+  color: @text-color;
+
+  background: @background-color;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: @link-color;
+  &:hover {
+    color: @link-color-hover;
+  }
+  &.btn-default {
+    color: @button-text-color;
+    background: @button-color;
+    border: none;
+
+    &:hover, &:active, &:focus {
+      color: @button-text-color !important;
+      background: @button-color-hover !important;
+      border: none !important;
+    }
+  }
+  &.btn-logout {
+    background: #dddddd;
+    color: @text-color;
+  }
+}
+
+p {
+	text-align: justify;
+  padding: 5px;
+}
+
+h1 {
+	font-family: @title-fonts;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+form {
+  text-align: right;
+
+  .form-submit {
+    font-size: 40px;
+  }
+
+  .form-error {
+    color: @text-color-warning;
+    font-weight: bold;
+    display: none;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: @theme-color-3;
+
+  .container  p {
+    padding: 10px 0 0;
+  }
+}
+
+/* Login page */
+#login-block {
+  margin-top: 100px;
+  text-align: justify;
+
+  input {
+    margin: 10px 0;
+  }
+ 
+  p {
+    font-size: 16px;
+  }
+}
+
+#logo {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+  img {
+    width: 150px;
+  }
+}
+
+/* Notes page */
+#notes-list,
+#note-container {
+  padding: 10px;
+}
+
+#notes-list {
+  ul {
+    margin-top: 10px;
+  }
+  li {
+    padding: 10px 5px;
+    border-bottom: 1px solid #eee;
+    span.remove {
+      display: none;
+      color: #bbb;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        color: #666;
+      }
+    }
+    span.preview {
+      font-size: 12px;
+      color: #aaa;
+    }
+  }
+  .actions {
+    text-align: center;
+  }
+}
+
+#note {
+  margin: 0 10px 10px 20px;
+
+  input,textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+  }
+  input {
+    font-family: @title-fonts;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  textarea {
+    height: 500px;
+    font-size: 16px;
+  }
+}
+

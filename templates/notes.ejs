@@ -1,0 +1,18 @@
+<% include header %>
+<div class="row">
+  <div class="col-md-2" id="notes-list">
+    <div id="logo">
+      <img src="./assets/img/logo.png" alt="Mellon" /> 
+      <h1>mellon</h1>
+    </div>
+    <p class="actions">
+      <a href="./logout" class="btn btn-default btn-logout"><span class="glyphicon glyphicon-off"></span> I am done</a>
+      <a href="#" class="btn btn-default" id="new-note"><span class="glyphicon glyphicon-pencil"></span> Add a note</a>
+    </p>
+    <ul></ul>
+  </div>
+  <div class="col-md-10" id="note-container">
+    <% include note %>
+  </div>
+</div>
+<% include footer %>
