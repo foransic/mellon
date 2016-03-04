@@ -1,8 +1,9 @@
 ﻿var express = require('express');
-var db = require('./model/db');
 var session = require('cookie-session');
 var bodyParser = require('body-parser');
 
+var config = require('./config');
+var db = require('./model/db');
 var auth = require('./auth');
 var note = require('./note');
 
@@ -11,7 +12,7 @@ app.set('views', __dirname + '/templates');
 app.set('view engine', 'ejs');
 
 app.use(session({
-  secret: 'pjxmD8NYYPfOGV673r3l'
+  secret: config.session.secret
 }));
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -47,4 +48,4 @@ app.post('/note', note.update)
 app.put('/note', note.create)
 app.delete('/note', note.delete)
 
-app.listen(9002);
+app.listen(config.app.port);

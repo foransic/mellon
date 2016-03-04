@@ -1,0 +1,22 @@
+{
+  "name": "mellon",
+  "version": "0.0.1",
+  "description": "Secured notes webapp",
+  "main": "app.js",
+  "author": "François Souin",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.14.2",
+    "cookie-session": "2.0.0-alpha.1",
+    "crypto-js": "3.1.6",
+    "ejs": "2.4.1",
+    "express": "4.13.4",
+    "less": "2.6.0",
+    "mongoose": "4.3.7"
+  },
+  "repository" : { 
+    "type" : "git",
+    "url" : "https://github.com/foransic/mellon.git"
+  }
+}
+}
