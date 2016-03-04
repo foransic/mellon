@@ -1,0 +1,8 @@
+# Logs
+npm-debug.log*
+
+# Config file
+config.js
+
+# Dependencies
+node_modules
