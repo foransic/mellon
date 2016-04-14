@@ -23,6 +23,10 @@ Except the current project, you will need a mongoDB server, node & NPM.
 - Create your own config file depending to your environment, based on config.sample.js
 - Start the app `node app.js`
 
+## Testing
+- Tests are based on mocha
+- Use `mocha` command to launch the test
+
 ## Known issues & improvements
 Properly manage errors
 
