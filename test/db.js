@@ -8,4 +8,4 @@ var noteSchema = new mongoose.Schema({
 });
 
 mongoose.model('Note', noteSchema);
-mongoose.connect('mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.base);
+mongoose.connect('mongodb://' + config.test.db.host + ':' + config.test.db.port + '/' + config.test.db.base);

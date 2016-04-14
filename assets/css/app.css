@@ -135,4 +135,10 @@ form .form-error {
 #note textarea {
   height: 500px;
   font-size: 16px;
+  border-radius: 10px;
+  padding: 20px;
+  background: #f4f5f6;
+}
+#note-md-container {
+  margin-top: 80px;
 }

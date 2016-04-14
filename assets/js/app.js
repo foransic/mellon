@@ -43,6 +43,7 @@ $('#notes-list').on('click', 'li>a', function() {
       $('#note #note-id').val(data._id);
       $('#note #title').val(data.title);
       $('#note #content').val(data.content);
+      $('#note-md-container').html(marked(data.content));
     }
   });
 }).on('click', 'li>span.remove', function() {
@@ -58,7 +59,8 @@ $('#notes-list').on('click', 'li>a', function() {
       $('#note #note-id').val('');
       $('#note #title').val('');
       $('#note #content').val('');
-    
+      $('#note-md-container').html('');
+      
       getNotes();
     }
   });   
@@ -70,6 +72,8 @@ $('#notes-list').on('click', 'li>a', function() {
   $('#note #note-id').val('');
   $('#note #title').val('');
   $('#note #content').val('');
+  $('#note-md-container').html('');
+  
 });
 
 /**
@@ -100,7 +104,7 @@ $('#note input,#note textarea').on('blur', function() {
         $('#note #note-id').val(data._id);
         $('#note #title').val(data.title);
         $('#note #content').val(data.content);
-      
+        $('#note-md-container').html(marked(data.content));
         getNotes();
       }
     });   
