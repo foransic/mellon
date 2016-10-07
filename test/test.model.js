@@ -12,15 +12,17 @@ describe('Notes', function() {
 
 	// before hook create data test
 	before(function(done) {
+     createNoteCb = function(error, note) {
+      if (error) throw error;
+      notesId.push(note._id);
+    };
+
 		for (i = 1; i <= 3; i++) {
-			notesModel.create('test', 'test' + i + '_title', 'test' + i + '_content', function(error, note) {
-				if (error) throw error;
-				notesId.push(note._id);
-			});
+			notesModel.create('test', 'test' + i + '_title', 'test' + i + '_content', createNoteCb);
 		}
 		done();
 	});
-
+  
 	// list notes test case
 	describe('#list()', function() {
 		it('list all notes for matching user', function(done) {

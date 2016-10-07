@@ -7,7 +7,7 @@ exports.list = function(req, res) {
 
   notesModel.list(user, function(error, notes) {
     if (error) {
-      res.json({error : error})
+      res.json({error : error});
     } else {
       jsonNotes = [];
       notes.forEach(function(note) { 
@@ -16,7 +16,7 @@ exports.list = function(req, res) {
       res.json(jsonNotes);
     }
   });
-}
+};
 
 exports.get = function(req, res) {
   user = req.session.user;
@@ -26,12 +26,12 @@ exports.get = function(req, res) {
   
   notesModel.get(user, id, function(error, note) {
     if (error) {
-      res.json({error : error})
+      res.json({error : error});
     } else {
       res.json(getNote(note, passphrase));
     }
   });
-}
+};
 
 exports.create = function(req, res) {
   user = req.session.user;
@@ -45,13 +45,13 @@ exports.create = function(req, res) {
     content = CryptoJS.AES.encrypt(content, passphrase);
     notesModel.create(user, title.toString(), content.toString(), function(error, note) {
       if (error) {
-        res.json({error : error})
+        res.json({error : error});
       } else {
         res.json(getNote(note, passphrase));
       }
     });
   }
-}
+};
 
 exports.update = function(req, res) {
   user = req.session.user;
@@ -64,13 +64,13 @@ exports.update = function(req, res) {
     content = CryptoJS.AES.encrypt(content, passphrase);
     notesModel.update(user, id, title.toString(), content.toString(), function(error, note) {
       if (error) {
-        res.json({error : error})
+        res.json({error : error});
       } else {
         res.json(getNote(note, passphrase));
       }
     });
   }
-}
+};
 
 exports.delete = function(req, res) {
   user = req.session.user;
@@ -79,13 +79,13 @@ exports.delete = function(req, res) {
   if (id) {
     notesModel.delete(user, id, function(error) {
       if (error) {
-        res.json({error : error})
+        res.json({error : error});
       } else {
         res.json({});
       }
     });
   }
-}
+};
 
 getNote = function(note, passphrase) {
   return {
@@ -93,4 +93,4 @@ getNote = function(note, passphrase) {
     title : CryptoJS.AES.decrypt(note.title, passphrase).toString(CryptoJS.enc.Utf8),
     content : CryptoJS.AES.decrypt(note.content, passphrase).toString(CryptoJS.enc.Utf8)
   };
-}
+};

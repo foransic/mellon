@@ -12,8 +12,6 @@
 @button-color: @theme-color-1;
 @button-color-hover: @theme-color-2;
 
-
-
 /* Fonts */
 @default-fonts: 'Poppins', sans-serif;
 @title-fonts: 'Poppins', sans-serif;
@@ -33,7 +31,8 @@ body {
   background: @background-color;
 }
 
-ul, li {
+#notes-list ul,
+#notes-list li {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -72,33 +71,18 @@ h1 {
   font-weight: 700;
 }
 
-form {
-  text-align: right;
-
-  .form-submit {
-    font-size: 40px;
-  }
-
-  .form-error {
-    color: @text-color-warning;
-    font-weight: bold;
-    display: none;
-  }
+#footer {
+    border-top: 1px solid #f1f1f1;
+    padding-top: 10px;
+    margin-top: 50px;
+    p {
+      margin: 2px 0 3px;
+      padding: 0;
+      text-align: center;
+      font-size: 0.85em;
+      color: #444;
+    }
 }
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 40px;
-  background-color: @theme-color-3;
-
-  .container  p {
-    padding: 10px 0 0;
-  }
-}
-
 /* Login page */
 #login-block {
   margin-top: 100px;
@@ -107,7 +91,7 @@ form {
   input {
     margin: 10px 0;
   }
- 
+
   p {
     font-size: 16px;
   }
@@ -124,7 +108,8 @@ form {
 
 /* Notes page */
 #notes-list,
-#note-container {
+#note-container,
+#note-preview-container {
   padding: 10px;
 }
 
@@ -154,7 +139,7 @@ form {
   }
 }
 
-#note {
+#note-container {
   margin: 0 10px 10px 20px;
 
   input,textarea {
@@ -170,7 +155,7 @@ form {
   }
 
   textarea {
-    height: 500px;
+    height: 300px;
     font-size: 16px;
     border-radius: 10px;
     padding: 20px;
@@ -178,7 +163,20 @@ form {
   }
 }
 
-#note-md-container {
-  margin-top: 80px;
-}
+#note-preview-container {
+  display: none;
+  margin: 0 10px 10px 20px;
 
+  h1 {
+   font-family: @title-fonts;
+   font-weight: bold;
+   font-size: 30px;
+   margin: 15px 0;
+ }
+ p {
+   background: #f4f5f6;
+   border-radius: 10px;
+   padding: 20px;
+    font-size: 16px;
+ }
+}

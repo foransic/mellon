@@ -1,8 +1,8 @@
 <% include header %>
 <div class="row">
-  <div class="col-md-2" id="notes-list">
+  <div class="col-md-3" id="notes-list">
     <div id="logo">
-      <img src="./assets/img/logo.png" alt="Mellon" /> 
+      <img src="./assets/img/logo.png" alt="Mellon" />
       <h1>mellon</h1>
     </div>
     <p class="actions">
@@ -10,10 +10,12 @@
       <a href="#" class="btn btn-default" id="new-note"><span class="glyphicon glyphicon-pencil"></span> Add a note</a>
     </p>
     <ul></ul>
+    <div id="footer">
+      <p><strong>Mellon</strong> Secured notes webapp</p>
+      <p><a href="http://francois.souin.fr">Fran&ccedil;ois Souin</a></p>
+    </div>
   </div>
-  <div class="col-md-4" id="note-container">
+  <div class="col-md-9">
     <% include note %>
-  </div>
-  <div class="col-md-6" id="note-md-container"></div>
 </div>
 <% include footer %>

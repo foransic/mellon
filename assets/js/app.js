@@ -27,10 +27,6 @@ $('document').ready(function() {
   }
 });
 
-$(window).on('scroll', function() {
-  $('#note').offset({ top: $(window).scrollTop()});
-});
-
 /**
  * Notes list interaction
  */
@@ -40,10 +36,16 @@ $('#notes-list').on('click', 'li>a', function() {
     if (data.error) {
       console.log('error : ' + error);
     } else {
-      $('#note #note-id').val(data._id);
-      $('#note #title').val(data.title);
-      $('#note #content').val(data.content);
-      $('#note-md-container').html(marked(data.content));
+      // update editable field
+      $('#note-container #note-id').val(data._id);
+      $('#note-container #title').val(data.title);
+      $('#note-container #content').val(data.content);
+
+      // update preview field
+      $('#note-preview-container h1').html(data.title);
+      $('#note-preview-container p').html(marked(data.content));
+      $('#note-container').hide();
+      $('#note-preview-container').show();
     }
   });
 }).on('click', 'li>span.remove', function() {
@@ -56,39 +58,58 @@ $('#notes-list').on('click', 'li>a', function() {
     if (data.error) {
       console.log('error : ' + error);
     } else {
-      $('#note #note-id').val('');
-      $('#note #title').val('');
-      $('#note #content').val('');
-      $('#note-md-container').html('');
-      
+      // update editable field
+      $('#note-container #note-id').val('');
+      $('#note-container #title').val('');
+      $('#note-container #content').val('');
+
+      // update preview field
+      $('#note-preview-container h1').html('');
+      $('#note-preview-container p').html('');
+      $('#note-container').show();
+      $('#note-preview-container').hide();
       getNotes();
     }
-  });   
+  });
 }).on('mouseover', 'li', function() {
   $(this).find('.remove').show();
 }).on('mouseout', 'li', function() {
   $(this).find('.remove').hide();
 }).on('click', 'a#new-note', function() {
-  $('#note #note-id').val('');
-  $('#note #title').val('');
-  $('#note #content').val('');
-  $('#note-md-container').html('');
-  
+  // update editable field
+  $('#note-container #note-id').val('');
+  $('#note-container #title').val('');
+  $('#note-container #content').val('');
+
+  // update preview field
+  $('#note-preview-container h1').html('');
+  $('#note-preview-container p').html('');
+  $('#note-container').show();
+  $('#note-preview-container').hide();
+});
+
+/**
+ * Switch from preview to edit
+ **/
+$('#note-preview-container').on('click', function() {
+  $('#note-preview-container').hide();
+  $('#note-container').show();
+  $('#note-container #content').focus();
 });
 
 /**
  * Save a note
  */
-$('#note input,#note textarea').on('blur', function() {
+$('#note-container button').on('click', function() {
   method = "PUT";
   noteId = "";
-  
-  if ($('#note #note-id').val()) {
-    noteId = $('#note #note-id').val();
+
+  if ($('#note-container #note-id').val()) {
+    noteId = $('#note-container #note-id').val();
     method = "POST";
   }
-  title = $('#note #title').val();
-  content = $('#note #content').val();
+  title = $('#note-container #title').val();
+  content = $('#note-container #content').val();
 
   if (title && content) {
     $.ajax('note', {
@@ -101,13 +122,19 @@ $('#note input,#note textarea').on('blur', function() {
       if (data.error) {
         console.log('error : ' + error);
       } else {
-        $('#note #note-id').val(data._id);
-        $('#note #title').val(data.title);
-        $('#note #content').val(data.content);
-        $('#note-md-container').html(marked(data.content));
+        // update editable field
+        $('#note-container #note-id').val(data._id);
+        $('#note-container #title').val(data.title);
+        $('#note-container #content').val(data.content);
+
+        // update preview field
+        $('#note-preview-container h1').html(data.title);
+        $('#note-preview-container p').html(marked(data.content));
+        $('#note-preview-container').show();
+        $('#note-container').hide();
         getNotes();
       }
-    });   
+    });
   }
 });
 

@@ -1,14 +1,12 @@
-<div id="note">
+<div id="note-container">
   <form name="note-form" id="note-form" method="post" action="note">
-<% if (typeof note != 'undefined') { %>
-    <input id="note-id" name="note-id" type="hidden" value="<%= note._id %>" />
-    <input id="title" name="title" type="text" placeholder="Title" value="<%= note.title %>">
-    <textarea id="content" name="content" placeholder="Content"><%= note.content %></textarea>
-<% } else { %>
     <input id="note-id" name="note-id" type="hidden" />
     <input id="title" name="title" type="text" placeholder="Title">
     <textarea id="content" name="content" placeholder="Content"></textarea>
-<% } %>
+    <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>
-
+<div id="note-preview-container">
+    <h1>Title</h1>
+  <p></p>
+</div>

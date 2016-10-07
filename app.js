@@ -42,10 +42,10 @@ app.get('/logout', auth.logout);
 /**
  * Notes routes
  */
-app.get('/notes', note.list)
-app.get('/note/:id', note.get)
-app.post('/note', note.update)
-app.put('/note', note.create)
-app.delete('/note', note.delete)
+app.get('/notes', note.list);
+app.get('/note/:id', note.get);
+app.post('/note', note.update);
+app.put('/note', note.create);
+app.delete('/note', note.delete);
 
 app.listen(config.app.port);

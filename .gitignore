@@ -4,5 +4,8 @@ npm-debug.log*
 # Config file
 config.js
 
+# Mocha tests results
+results.txt
+
 # Dependencies
 node_modules

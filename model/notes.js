@@ -14,7 +14,8 @@ exports.list = function(user, callback) {
       callback(null, notes);
     }
   });
-}
+};
+
 /**
  * Find a note by its id & user
  */
@@ -36,7 +37,7 @@ exports.get = function(user, id, callback) {
       callback(null,null);
     }
   });
-}
+};
 
 /**
  * Create a note
@@ -49,7 +50,7 @@ exports.create = function(user, title, content, callback) {
     content: content
   });
   _note.save(callback);
-}
+};
 
 /**
  *  Export a note
@@ -74,7 +75,7 @@ exports.update = function(user, id, title, content, callback) {
       callback(null,null);
     }
   });
-}
+};
 
 /**
  *  Delete a note
@@ -90,4 +91,4 @@ exports.delete = function(user, id, callback) {
       callback(null);
     }
   });
-}
+};

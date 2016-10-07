@@ -10,9 +10,9 @@ exports.login = function(req, res) {
  		req.session.passphrase = SHA256(passphrase).toString();
 	}
   res.redirect('back');
-}
+};
 
 exports.logout = function(req, res) {
   req.session = null;
   res.redirect('back');
-}
+};

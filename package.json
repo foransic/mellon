@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Secured notes webapp",
   "main": "app.js",
-  "author": "François Souin",
+  "author": "Franï¿½ois Souin",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.14.2",
@@ -14,8 +14,18 @@
     "less": "2.6.0",
     "mongoose": "4.3.7"
   },
-  "repository" : { 
-    "type" : "git",
-    "url" : "https://github.com/foransic/mellon.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/foransic/mellon.git"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.3.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.5.3"
   }
 }
