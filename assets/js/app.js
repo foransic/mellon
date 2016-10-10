@@ -100,7 +100,8 @@ $('#note-preview-container').on('click', function() {
 /**
  * Save a note
  */
-$('#note-container button').on('click', function() {
+$('#note-form').on('submit', function(event) {
+  event.preventDefault();
   method = "PUT";
   noteId = "";
 
