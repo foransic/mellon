@@ -1,13 +1,11 @@
-var AES = require("crypto-js/aes");
-var SHA256 = require("crypto-js/sha256");
+var CryptoJS = require("crypto-js");
+var config = require('./config');
 
 exports.login = function(req, res) {
-  user = req.body.user;
   passphrase = req.body.passphrase;
-
-  if (user && passphrase) {
-  	req.session.user = SHA256(user).toString();
- 		req.session.passphrase = SHA256(passphrase).toString();
+  if (passphrase) {
+    req.session.user = CryptoJS.AES.encrypt(config.app.answer, passphrase).toString();
+ 		req.session.passphrase = CryptoJS.SHA256(passphrase).toString();
 	}
   res.redirect('back');
 };

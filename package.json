@@ -1,9 +1,9 @@
 {
   "name": "mellon",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Secured notes webapp",
   "main": "app.js",
-  "author": "Fran�ois Souin",
+  "author": "François Souin",
   "license": "MIT",
   "dependencies": {
     "body-parser": "1.14.2",

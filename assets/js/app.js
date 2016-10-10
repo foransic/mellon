@@ -8,17 +8,9 @@ $('document').ready(function() {
       evt.preventDefault();
 
       $('#login-block .form-error').hide();
-
-      user = $('#user').val();
       passphrase = $('#passphrase').val();
 
-      valid = false;
-
-      if (user && passphrase) {
-        valid = true;
-      }
-
-      if (valid) {
+      if (passphrase) {
         $('#login-block form').submit();
       } else {
         $('#login-block .form-error').show();

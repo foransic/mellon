@@ -71,6 +71,9 @@ h1 {
 #login-block p {
   font-size: 16px;
 }
+#login-block p.form-error {
+  display: none;
+}
 #logo {
   text-align: center;
   font-weight: bold;
