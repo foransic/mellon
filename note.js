@@ -2,15 +2,14 @@ var notesModel = require('./model/notes.js');
 var CryptoJS = require("crypto-js");
 
 exports.list = function(req, res) {
-  user = req.session.user;
   passphrase = req.session.passphrase;
 
-  notesModel.list(user, function(error, notes) {
+  notesModel.list(function(error, notes) {
     if (error) {
       res.json({error : error});
     } else {
       jsonNotes = [];
-      notes.forEach(function(note) { 
+      notes.forEach(function(note) {
         jsonNotes.push(getNote(note, passphrase));
       });
       res.json(jsonNotes);
@@ -19,12 +18,11 @@ exports.list = function(req, res) {
 };
 
 exports.get = function(req, res) {
-  user = req.session.user;
   passphrase = req.session.passphrase;
 
   id = req.params.id;
-  
-  notesModel.get(user, id, function(error, note) {
+
+  notesModel.get(id, function(error, note) {
     if (error) {
       res.json({error : error});
     } else {
@@ -34,16 +32,15 @@ exports.get = function(req, res) {
 };
 
 exports.create = function(req, res) {
-  user = req.session.user;
   passphrase = req.session.passphrase;
 
   title = req.body.title;
   content = req.body.content;
-  
+
   if (title && content) {
     title =  CryptoJS.AES.encrypt(title, passphrase);
     content = CryptoJS.AES.encrypt(content, passphrase);
-    notesModel.create(user, title.toString(), content.toString(), function(error, note) {
+    notesModel.create(title.toString(), content.toString(), function(error, note) {
       if (error) {
         res.json({error : error});
       } else {
@@ -54,15 +51,14 @@ exports.create = function(req, res) {
 };
 
 exports.update = function(req, res) {
-  user = req.session.user;
   id = req.body._id;
   title = req.body.title;
   content = req.body.content;
-  
+
   if (id) {
     title =  CryptoJS.AES.encrypt(title, passphrase);
     content = CryptoJS.AES.encrypt(content, passphrase);
-    notesModel.update(user, id, title.toString(), content.toString(), function(error, note) {
+    notesModel.update(id, title.toString(), content.toString(), function(error, note) {
       if (error) {
         res.json({error : error});
       } else {
@@ -73,11 +69,10 @@ exports.update = function(req, res) {
 };
 
 exports.delete = function(req, res) {
-  user = req.session.user;
   id = req.body._id;
-  
+
   if (id) {
-    notesModel.delete(user, id, function(error) {
+    notesModel.delete(id, function(error) {
       if (error) {
         res.json({error : error});
       } else {

@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
 
 /**
- * Find all notes for an user
+ * Find all notes
  */
-exports.list = function(user, callback) {
+exports.list = function(callback) {
   var Note = mongoose.model('Note');
-  Note.find({
-    'user' : user
-  }, function(error, notes) {
+  Note.find({}, function(error, notes) {
     if (error) {
       callback(error, null);
     } else {
@@ -17,9 +15,9 @@ exports.list = function(user, callback) {
 };
 
 /**
- * Find a note by its id & user
+ * Find a note by its id
  */
-exports.get = function(user, id, callback) {
+exports.get = function(id, callback) {
   var Note = mongoose.model('Note');
   Note.find({
     '_id' : id
@@ -28,11 +26,7 @@ exports.get = function(user, id, callback) {
       callback(error, null);
     } else if (notes && notes.length == 1) {
       _note = notes[0];
-      if (_note.user == user) {
-        callback(null, _note);
-      } else {
-        callback("BAD_USERKEY", null);
-      }
+      callback(null, _note);
     } else {
       callback(null,null);
     }
@@ -42,10 +36,9 @@ exports.get = function(user, id, callback) {
 /**
  * Create a note
  */
-exports.create = function(user, title, content, callback) {
+exports.create = function(title, content, callback) {
   var Note = mongoose.model('Note');
   var _note = new Note({
-    user: user,
     title: title,
     content: content
   });
@@ -55,7 +48,7 @@ exports.create = function(user, title, content, callback) {
 /**
  *  Export a note
  */
-exports.update = function(user, id, title, content, callback) {
+exports.update = function(id, title, content, callback) {
   var Note = mongoose.model('Note');
   Note.find({
     '_id' : id
@@ -64,13 +57,9 @@ exports.update = function(user, id, title, content, callback) {
       callback(error, null);
     } else if (notes && notes.length == 1) {
       _note = notes[0];
-      if (_note.user == user) {
-        _note.title = title;
-        _note.content = content;
-        _note.save(callback);
-      } else {
-        callback("BAD_USERKEY", null);
-      }
+      _note.title = title;
+      _note.content = content;
+      _note.save(callback);
     } else {
       callback(null,null);
     }
@@ -79,8 +68,8 @@ exports.update = function(user, id, title, content, callback) {
 
 /**
  *  Delete a note
- */ 
-exports.delete = function(user, id, callback) {
+ */
+exports.delete = function(id, callback) {
   var Note = mongoose.model('Note');
   Note.remove({
     '_id' : id

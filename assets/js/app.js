@@ -1,5 +1,5 @@
 $('document').ready(function() {
-  if ($('#notes-list')) {
+  if ($('#notes-list').length) {
     getNotes();
   }
 

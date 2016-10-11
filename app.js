@@ -17,7 +17,7 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
-})); 
+}));
 
 module.exports = app;
 
@@ -26,13 +26,13 @@ module.exports = app;
  */
 app.route('/')
   .get(function(req, res) {
-    if (req.session.user) {
+    if (req.session.passphrase) {
       res.render('notes.ejs');
     } else {
       res.render('login.ejs');
     }
   });
-  
+
 /**
  * Login route
  */
