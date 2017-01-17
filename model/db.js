@@ -12,4 +12,4 @@ var questionSchema = new mongoose.Schema({
 
 mongoose.model('Note', noteSchema);
 mongoose.model('Question', questionSchema);
-mongoose.connect('mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.base);
+mongoose.connect('mongodb://' + config.db.user + ':' + config.db.password + '@' + config.db.host + ':' + config.db.port + '/' + config.db.base);
